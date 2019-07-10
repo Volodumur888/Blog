@@ -1,6 +1,6 @@
 <?php
 
-const HOST = "10.7.101.244";
-const USER = "user";
-const PASS = "user";
-const DBNAME = "users";
+const HOST = "localhost";
+const USER = "BlogAdmin";
+const PASS = "BlogAdmin";
+const DBNAME = "blog_base";

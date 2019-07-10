@@ -3,18 +3,23 @@ session_start();
 if (isset($_SESSION["username"])){
      header("Location: search.php");
 }
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+
+
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
 if (!empty($_POST)){
     $email = $_POST["email"];
     $password = $_POST["password"];
     require_once "./controller/userController.php";
     $formValidate = new userController();
     $user = $formValidate->Validate($email, $password );
-    // echo "<pre>";
-    // print_r($user);
-    // echo "</pre>";
+    echo "<pre>";
+    print_r($user);
+    echo "</pre>";
     if (isset($user['email'])){
         $useremail = $user['email'];
         $_SESSION["username"] = $useremail;
@@ -36,8 +41,8 @@ if (!empty($_POST)){
             <h1>Home page</h1>
             <form method="POST" action="index.php">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="exampleInputEmail1">User name</label>
+                    <input type="text" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
@@ -52,8 +57,9 @@ if (!empty($_POST)){
                     //     echo $_SESSION["msg"];
                     // } 
                      if(isset($_SESSION["passError"])){
+                        
+                        $_SESSION["passError"] = "Invalid username or password";
                         echo $_SESSION["passError"];
-                        $_SESSION["passError"] = "";
                     }
                 ?>
             </div>
